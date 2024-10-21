@@ -10,20 +10,42 @@
     }
   }
   
-  .float-down-element {
-    animation: floatDown 2s ease-in-out infinite;
-    position: fixed;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    padding: 10px;
-    /* background-color: #f2f2f2;
-    border: 1px solid #ddd; */
-    text-align: center;
-    z-index: 1000;
-  }
+.float-down-element {
+  animation: floatDown 2s ease-in-out infinite;
+  position: fixed;
+  bottom: 10%;
+  padding: 10px;
+  /* background-color: #f2f2f2;
+  border: 1px solid #ddd; */
+  text-align: center;
+  z-index: 1000;
+}
   /* 模糊的阴影 */
 .shadow-blurred {
-    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.817);
+    text-shadow: 0 0 0.2rem rgb(0, 0, 0),0 0 0.5rem rgb(0, 0, 0),0 0 1rem rgb(0, 0, 0);
+}
+
+/* 默认样式，适用于宽度小于600px的情况 */
+.adaptive-element {
+  width: 90vw;
+  max-width: 600px; /* 设置最大宽度为600px */
+}
+
+/* 当视口宽度大于或等于600px时应用的样式 */
+@media (min-width: 600px) {
+  .adaptive-element {
+    width: 600px; /* 固定宽度为600px */
+  }
+}
+
+.remove-underline{
+text-decoration:none;
+}
+
+p{
+  font-size: medium;
+}
+
+.hyperlink-color{
+  color: rgb(98, 190, 255);
 }
