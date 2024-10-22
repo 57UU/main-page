@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import './App.css';
 import getPhotoUrl from './GetBackground';
 import { Row, Col, Card, Button } from 'antd';
-import { AlignLeftOutlined, DownOutlined, GithubOutlined, LinkOutlined } from '@ant-design/icons';
+import { AlignLeftOutlined, CloudOutlined, DownOutlined, GithubOutlined, LinkOutlined, TableOutlined } from '@ant-design/icons';
 
 function App() {
   const [wheel_num, setWheelNum] = useState(0);
@@ -32,7 +32,9 @@ function App() {
         }}>
         <p><GithubOutlined /> {HyperLink("https://github.com/57UU", "Github")}</p>
         <p><AlignLeftOutlined /> {HyperLink("https://blog.57u.tech/", "Blog")}</p>
-        <p><LinkOutlined /> {HyperLink("https://blog.57u.tech/link/", "友链")}</p>
+        <p><CloudOutlined /> {HyperLink("https://weather.57u.tech/", "Weather")}</p>
+        <p><TableOutlined /> {HyperLink("https://truth-table.57u.tech/", "Truth Table Generater")}</p>
+        <p><LinkOutlined /> {HyperLink("https://blog.57u.tech/link/", "More Links")}</p>
       </Card>
     </div>
     <ScrollDownIndicator />
