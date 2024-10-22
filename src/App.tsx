@@ -8,10 +8,14 @@ function App() {
   const [wheel_num, setWheelNum] = useState(0);
   // 滚轮事件
   document.addEventListener('wheel', (event) => {
+    if(event.deltaY<0||event.ctrlKey||event.metaKey){
+      setWheelNum(0);
+      return;
+    }
     setWheelNum(wheel_num + 1);
     // 滚轮滑动两次进入新页面
     if (wheel_num > 1) {
-      window.location.assign("http://blog.57u.tech")
+      window.location.href=("http://blog.57u.tech")
       setWheelNum(0);
     }
   })
@@ -30,10 +34,10 @@ function App() {
           background: '#313638B0',
           top: '20%'
         }}>
-        <p><GithubOutlined /> {HyperLink("https://github.com/57UU", "Github")}</p>
         <p><AlignLeftOutlined /> {HyperLink("https://blog.57u.tech/", "Blog")}</p>
+        <p><GithubOutlined /> {HyperLink("https://github.com/57UU", "Github")}</p>
         <p><CloudOutlined /> {HyperLink("https://weather.57u.tech/", "Weather")}</p>
-        <p><TableOutlined /> {HyperLink("https://truth-table.57u.tech/", "Truth Table Generater")}</p>
+        <p><TableOutlined /> {HyperLink("https://truth-table.57u.tech/", "Truth Table Generator")}</p>
         <p><LinkOutlined /> {HyperLink("https://blog.57u.tech/link/", "More Links")}</p>
       </Card>
     </div>
@@ -45,7 +49,7 @@ function App() {
 function ScrollDownIndicator() {
   return (
     <a className='float-down-element remove-underline' href='https://blog.57u.tech/'>
-      <div  style={{ textAlign: 'center',color:'white' }} >
+      <div style={{ textAlign: 'center', color: 'white' }} >
         <div className='shadow-blurred'>My Blog</div>
         <br />
         <DownOutlined className='shadow-blurred' />
