@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import getPhotoUrl from './GetBackground';
-import { Row, Col, Card, Button } from 'antd';
-import { AlignLeftOutlined, CloudOutlined, DownOutlined, GithubOutlined, LinkOutlined, TableOutlined } from '@ant-design/icons';
+import { Row, Col, Card, Button, FloatButton } from 'antd';
+import { AlignLeftOutlined, CloudOutlined, DownOutlined, GithubOutlined, LinkOutlined, ReloadOutlined, TableOutlined } from '@ant-design/icons';
 
 function App() {
   const [wheel_num, setWheelNum] = useState(0);
@@ -38,6 +38,14 @@ function App() {
     //padding: '2rem',
   }} >
     <div >
+      <FloatButton
+        shape="circle"
+        type="primary"
+        icon={<ReloadOutlined />}
+        onClick={()=>{
+          setBasicStyle(getBodyStyle())
+        }}
+      />
       <Card
         title={<h3 className='white'>Welcome to 57U's Page</h3>}
         bordered={false}
@@ -69,6 +77,7 @@ function ScrollDownIndicator() {
     </a>
   )
 }
+
 function HyperLink(target: string, text: string) {
   return <a href={target} className='hyperlink-color'>{text}</a>
 }
