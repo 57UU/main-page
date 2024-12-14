@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import getPhotoUrl from './GetBackground';
 import { Row, Col, Card, Button } from 'antd';
@@ -6,20 +6,32 @@ import { AlignLeftOutlined, CloudOutlined, DownOutlined, GithubOutlined, LinkOut
 
 function App() {
   const [wheel_num, setWheelNum] = useState(0);
+  const [basicStyle,setBasicStyle] = useState(getBodyStyle())
   // 滚轮事件
-  document.addEventListener('wheel', (event) => {
-    if(event.deltaY<0||event.ctrlKey||event.metaKey){
-      setWheelNum(0);
-      return;
+  useEffect(() => {
+    const callback=(event: { deltaY: number; ctrlKey: any; metaKey: any; }) => {
+      if (event.deltaY < 0 || event.ctrlKey || event.metaKey) {
+        setWheelNum(0);
+        return;
+      }
+      setWheelNum(wheel_num + 1);
     }
-    setWheelNum(wheel_num + 1);
+    document.addEventListener('wheel',callback )
+    return ()=>{
+      document.removeEventListener('wheel',callback )
+    }
+  },[wheel_num])//only run one time
+  // 滚轮事件
+  useEffect(() => {
+    console.log("wheel:"+wheel_num)
     // 滚轮滑动两次进入新页面
     if (wheel_num > 1) {
-      window.location.href=("http://blog.57u.tech")
+      window.location.href = ("http://blog.57u.tech")
       setWheelNum(0);
     }
-  })
-  const basicStyle = getBodyStyle()
+  }, [wheel_num])
+
+  //const basicStyle = getBodyStyle()
   return (<div style={{
     ...basicStyle,
     //width: 'auto',
