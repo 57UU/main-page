@@ -6,7 +6,9 @@ import { AlignLeftOutlined, CloudOutlined, DownOutlined, GithubOutlined, LinkOut
 
 function App() {
   const [wheel_num, setWheelNum] = useState(0);
-  const [basicStyle,setBasicStyle] = useState(getBodyStyle())
+  const [backgroundImageIndex, setBackgroundImageIndex] = useState(-1);
+  const [basicStyle,setBasicStyle] = useState(getBodyStyle(backgroundImageIndex))
+  
   // 滚轮事件
   useEffect(() => {
     const callback=(event: { deltaY: number; ctrlKey: any; metaKey: any; }) => {
@@ -43,7 +45,7 @@ function App() {
         type="primary"
         icon={<ReloadOutlined />}
         onClick={()=>{
-          setBasicStyle(getBodyStyle())
+          setBasicStyle(getBodyStyle(backgroundImageIndex))
         }}
       />
       <Card
@@ -81,9 +83,9 @@ function ScrollDownIndicator() {
 function HyperLink(target: string, text: string) {
   return <a href={target} className='hyperlink-color'>{text}</a>
 }
-function getBodyStyle() {
+function getBodyStyle(index:number) {
   return {
-    backgroundImage: `url('${getPhotoUrl()}')`,
+    backgroundImage: `url('${getPhotoUrl(index)}')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
