@@ -53,3 +53,20 @@ p{
 .white{
   color: white;
 }
+
+/* 仅淡入效果 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+      background: #1e1e1e;
+      color: #eee;
+  }
+}

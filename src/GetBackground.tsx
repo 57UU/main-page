@@ -3,6 +3,6 @@ function getPhotoUrl(index=-1){
     if(index<0){
         index=Math.trunc(Math.random()*max_photo)
     }
-    return `../bg/${index}.avif`
+    return {img:`../bg/${index}.avif`,index:index}
 }
 export default getPhotoUrl;
